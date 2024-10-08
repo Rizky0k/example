@@ -3,6 +3,7 @@ import { formatDate } from "@/utils/mdFormatter";
 import Markdown from "markdown-to-jsx";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type BlogDetailProps = {
@@ -48,7 +49,7 @@ const BlogDetail = async ({ params: { slug } }: BlogDetailProps) => {
         <div className="flex gap-2 items-center">
           {/* <Avatar name={post.author} /> */}
           <div className="flex flex-col">
-            <p className="text-lg font-bold w-full">{blog?.author}</p>
+            <p className="text-lg font-bold w-full">{blog.author}</p>
             <small className=" w-full">{formatDate(blog.updatedAt)}</small>
           </div>
         </div>
@@ -74,9 +75,9 @@ const BlogDetail = async ({ params: { slug } }: BlogDetailProps) => {
           alt="image"
           width={900}
           height={400}
-          className="lg:w-3/4 w-full h-[65vh] object-cover object-center mb-10"
+          className=" w-full h-[65vh] object-cover object-center mb-10"
         />
-        <div className="text-justify lg:w-1/2 md:w-3/4 w-full">
+        <div className="text-justify  w-full">
           <Markdown
             options={{
               overrides: {},
@@ -85,6 +86,14 @@ const BlogDetail = async ({ params: { slug } }: BlogDetailProps) => {
             {blog.article}
           </Markdown>
         </div>
+      </div>
+      <div className="lg:w-1/2 md:w-3/4 w-full">
+        <Link
+          href={`/blog/?category=${blog.category.toLowerCase()}`}
+          className="bg-slate-100 w-fit rounded-2xl py-1 px-3 text-slate-500"
+        >
+          {blog.category}
+        </Link>
       </div>
     </div>
   );

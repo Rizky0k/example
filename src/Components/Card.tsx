@@ -35,13 +35,13 @@ export const Card = ({ blogs }: cardProps) => {
               <Image
                 src={blog.imageUrl || ""}
                 alt={blog.imageName || "image"}
-                width={900}
+                width={500}
                 height={400}
                 className="h-[40vh] w-full lg:min-w-[46vw] object-cover object-center"
               />
 
               <p
-                className={` tracking-wide absolute bottom-2 right-2 font-bold bg-white/80 text-black `}
+                className={` tracking-wide absolute bottom-2 right-2 font-bold text-sm px-3 py-1 bg-white/80 text-black `}
               >
                 {blog.category}
               </p>
